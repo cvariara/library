@@ -11,18 +11,6 @@ const myLibrary = [
     pages: 434,
     completed: false,
   },
-  {
-    title: "Golden Son",
-    author: "Pierce Brown",
-    pages: 434,
-    completed: true,
-  },
-  {
-    title: "Golden Son",
-    author: "Pierce Brown",
-    pages: 434,
-    completed: false,
-  },
 ];
 
 const form = document.querySelector("form");
@@ -74,8 +62,7 @@ function addBookToLibrary() {
   myLibrary.push(book);
 }
 
-function displayBooks(book) {
-  // console.log(book);
+function displayBooks() {
   cards.innerHTML = "";
   myLibrary.forEach((book) => {
     cards.innerHTML += `
@@ -83,12 +70,13 @@ function displayBooks(book) {
         <div class="title">Title: ${book.title}</div>
         <div class="author">Author: ${book.author}</div>
         <div class="pages">Pages: ${book.pages}</div>
-        <div class="completed">Completed?: ${book.completed ? "Yes" : "No"}</div>
+        <div class="completed">Completed?: ${
+          book.completed ? "Yes" : "No"
+        }</div>
         <button class="remove-book">Remove Book</button>
       </div>
       `;
-  })
+  });
 }
-
 
 displayBooks();
