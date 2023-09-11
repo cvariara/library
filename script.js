@@ -20,19 +20,33 @@ const bookPages = document.querySelector("#pages");
 const isBookCompleted = document.querySelector("#completed");
 const cards = document.querySelector(".cards");
 
+const addBookModal = document.querySelector("#add-book-modal");
+const addBookBtn = document.querySelector(".add-book");
+const closeModalBtn = document.querySelector(".close-modal");
+
+addBookBtn.addEventListener("click", () => {
+  addBookModal.showModal();
+});
+
+closeModalBtn.addEventListener("click", () => {
+  addBookModal.close();
+});
+
+cards.addEventListener("click", (e) => {
+  if (e.target.classList.contains("remove-book")) {
+    const parent = e.target.parentElement;
+    console.log(parent.dataset.book);
+    removeBook(parent.dataset.book);
+  }
+});
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  // const book = {};
-  // book.title = e.target.title.value;
-  // book.author = e.target.author.value;
-  // book.pages = e.target.pages.value;
-  // book.completed = e.target.completed.value;
-  // console.log(book)
 
   addBookToLibrary();
   displayBooks();
 
+  addBookModal.close();
   form.reset();
 });
 
@@ -62,11 +76,18 @@ function addBookToLibrary() {
   myLibrary.push(book);
 }
 
+function removeBook(book) {
+  console.log(`remove ${book}`);
+  myLibrary.splice(book, 1);
+  console.table(myLibrary);
+  displayBooks();
+}
+
 function displayBooks() {
   cards.innerHTML = "";
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     cards.innerHTML += `
-      <div class="card">
+      <div class="card" data-book="${index}">
         <div class="title">Title: ${book.title}</div>
         <div class="author">Author: ${book.author}</div>
         <div class="pages">Pages: ${book.pages}</div>
