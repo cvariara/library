@@ -1,9 +1,22 @@
+:root {
+  --completed: rgb(101, 187, 101);
+  --not-completed: rgb(207, 88, 88);
+}
+
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.03);
 }
 
 .container {
@@ -51,11 +64,27 @@ form {
 }
 
 .card {
-  height: 350px;
-  width: 250px;
+  height: 250px;
+  width: 275px;
+  border-radius: 8px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.card div {
-  margin: 12px;
+.card button {
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  width: 80%;
+}
+
+.completed {
+  background-color: var(--completed);
+}
+
+.not-completed {
+  background-color: var(--not-completed);
 }
