@@ -10,33 +10,34 @@
   <body>
     <div class="container">
       <div class="header">
+        <h1>Library</h1>
         <button class="add-book">Add Book</button>
       </div>
       <dialog id="add-book-modal">
         <form action="">
           <div class="form-row">
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" />
+            <input type="text" name="title" id="title" placeholder="Title" />
           </div>
           <div class="form-row">
-            <label for="author">Author</label>
-            <input type="text" name="author" id="author" />
+            <input type="text" name="author" id="author" placeholder="Author" />
           </div>
           <div class="form-row">
-            <label for="pages">Pages</label>
-            <input type="number" name="pages" id="pages" />
+            <input type="number" name="pages" id="pages" placeholder="Pages" />
           </div>
           <div class="form-row">
             <label for="completed">Completed?</label>
             <input type="checkbox" name="completed" id="completed" value="true" />
           </div>
           <div class="form-row">
+            <button type="submit" class="submit-book">Add Book</button>
             <button class="close-modal" type="button">Cancel</button>
-            <button type="submit">Add Book</button>
           </div>
         </form>
       </dialog>
       <div class="cards"></div>
+      <div class="footer">
+        <p>Copyright © CV 2023</p>
+      </div>
     </div>
   </body>
 </html>

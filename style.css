@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
 :root {
   --completed: rgb(101, 187, 101);
   --not-completed: rgb(207, 88, 88);
+  --main-bg: rgb(127, 186, 226);
+  --secondary-bg: rgb(93, 136, 165);
+  --third-bg: rgb(69, 136, 180);
 }
 
 *,
@@ -20,14 +25,40 @@ button:hover {
 }
 
 .container {
-  height: 100vh;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 .header {
-  height: 80px;
+  height: 150px;
+  background-color: #fdfdfd;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 15px;
+}
+
+.header h1 {
+  letter-spacing: 1.5px;
+  font-weight: 400;
+  font-size: 48px;
+  color: rgb(37, 44, 75);
+}
+
+.add-book {
+  border: none;
+  background-color: var(--main-bg);
+  padding: 0.5rem;
+  width: 10rem;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+}
+
+.add-book:hover,
+.submit-book:hover {
+  background-color: var(--secondary-bg);
 }
 
 dialog {
@@ -35,7 +66,7 @@ dialog {
   height: 450px;
   padding: 20px;
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 2px solid black;
   border-radius: 5px;
   position: fixed;
   top: 50%;
@@ -52,10 +83,58 @@ form {
   gap: 20px;
 }
 
-.cards {
-  background-color: gray;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.form-row input[type="text"],
+.form-row input[type="number"] {
+  height: 40px;
+  background-color: #ffffff;
+  border: 2px solid #D6D9DC;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-row:last-child {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
+  gap: 20px;
+}
+
+.form-row button {
+  border: none;
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+.submit-book {
+  background-color: var(--main-bg);
+  color: white;
+  font-size: 16px;
+}
+
+.close-modal {
+  background-color: var(--not-completed);
+  color: white;
+  font-size: 16px;
+}
+
+.close-modal:hover {
+  background-color: rgb(129, 61, 61);
+}
+
+.cards {
+  background-color: var(--main-bg);
+  width: 100%;
+  height: 100vh;
   padding: 20px;
   display: grid;
   gap: 15px;
@@ -72,6 +151,7 @@ form {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  box-shadow: 2px 2px 8px rgb(0, 0, 0, 0.5);
 }
 
 .card button {
@@ -87,4 +167,14 @@ form {
 
 .not-completed {
   background-color: var(--not-completed);
+}
+
+.footer {
+  grid-column: 1 / 3;
+  background-color: var(--secondary-bg);
+  color: white;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
