@@ -35,8 +35,13 @@ closeModalBtn.addEventListener("click", () => {
 cards.addEventListener("click", (e) => {
   if (e.target.classList.contains("remove-book")) {
     const parent = e.target.parentElement;
-    console.log(parent.dataset.book);
     removeBook(parent.dataset.book);
+    return;
+  }
+  if (e.target.classList.contains("toggle-complete")) {
+    const parent = e.target.parentElement;
+    toggleReadStatus(parent.dataset.book);
+    return;
   }
 });
 
@@ -83,6 +88,15 @@ function removeBook(book) {
   displayBooks();
 }
 
+function toggleReadStatus(bookValue) {
+  myLibrary.forEach((book, index) => {
+    if (parseInt(bookValue) === index) {
+      book.completed = !book.completed;
+    }
+  });
+  displayBooks();
+}
+
 function displayBooks() {
   cards.innerHTML = "";
   myLibrary.forEach((book, index) => {
@@ -91,9 +105,11 @@ function displayBooks() {
         <div class="title">Title: ${book.title}</div>
         <div class="author">Author: ${book.author}</div>
         <div class="pages">Pages: ${book.pages}</div>
-        <div class="completed">Completed?: ${
-          book.completed ? "Yes" : "No"
-        }</div>
+        <button class="toggle-complete ${
+          book.completed ? "completed" : "not-completed"
+        }">
+        ${book.completed ? "Have Read" : "Have Not Read"}
+        </button>
         <button class="remove-book">Remove Book</button>
       </div>
       `;
