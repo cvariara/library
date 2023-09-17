@@ -2,13 +2,7 @@ const myLibrary = [
   {
     title: "Red Rising",
     author: "Pierce Brown",
-    pages: 382,
-    completed: true,
-  },
-  {
-    title: "Golden Son",
-    author: "Pierce Brown",
-    pages: 434,
+    pages: 416,
     completed: false,
   },
 ];
@@ -55,11 +49,13 @@ form.addEventListener("submit", (e) => {
   form.reset();
 });
 
-function Book(title, author, pages, completed) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.completed = completed;
+class Book {
+  constructor(title, author, pages, completed) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.completed = completed;
+  }
 }
 
 function addBookToLibrary() {
