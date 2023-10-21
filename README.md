@@ -18,6 +18,8 @@ To update an added book's completion, click on the button below pages.
 
 To remove a book, click the Remove Book button.
 
+Saved the data to browser using Local Storage.
+
 ## Built With
 
 ### Technologies
@@ -31,6 +33,7 @@ To remove a book, click the Remove Book button.
 * VS Code
 * Git and GitHub
 * Linux Terminal
+* Local Storage
 
 ### Dependencies
 

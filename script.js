@@ -1,4 +1,4 @@
-const myLibrary = [
+const myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [
   {
     title: "Red Rising",
     author: "Pierce Brown",
@@ -75,12 +75,12 @@ function addBookToLibrary() {
     isBookCompleted.checked
   );
   myLibrary.push(book);
+  saveLibraryToLocalStorage();
 }
 
 function removeBook(book) {
-  console.log(`remove ${book}`);
   myLibrary.splice(book, 1);
-  console.table(myLibrary);
+  saveLibraryToLocalStorage();
   displayBooks();
 }
 
@@ -90,7 +90,12 @@ function toggleReadStatus(bookValue) {
       book.completed = !book.completed;
     }
   });
+  saveLibraryToLocalStorage();
   displayBooks();
+}
+
+function saveLibraryToLocalStorage() {
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
 
 function displayBooks() {
